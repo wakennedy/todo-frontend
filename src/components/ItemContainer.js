@@ -8,9 +8,6 @@ export default class ItemContainer extends Component {
   };
   render() {
     return (
-      // <Fragment>
-      //   <div>{this.renderItems()}</div>
-      // </Fragment>
       <Fragment>
         <div className="wrapper">
           <table>
