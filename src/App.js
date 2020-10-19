@@ -28,7 +28,23 @@ class App extends Component {
     newItem.description = event.target.description.value;
     newItem.category = event.target.category.value;
 
-    console.log(newItem);
+    //post item to db
+    fetch(ITEMURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        item: newItem,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          items: [...this.state.items, { ...data }],
+        });
+      });
   };
   render() {
     return (
