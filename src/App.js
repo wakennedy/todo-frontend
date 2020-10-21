@@ -46,12 +46,27 @@ class App extends Component {
         });
       });
   };
+  handleItemDelete = (itemInfo) => {
+    let itemsArray = [...this.state.items];
+    let index = itemsArray.indexOf(itemInfo);
+    itemsArray.splice(index, 1);
+
+    fetch(`${ITEMURL}/${itemInfo.id}`, {
+      method: "DELETE",
+    }).then((res) => res.json());
+    this.setState({
+      items: itemsArray,
+    });
+  };
   render() {
     return (
       <Fragment>
         <div className="wrapper">
           <div>Test </div>
-          <ItemContainer items={this.state.items} />
+          <ItemContainer
+            items={this.state.items}
+            onItemDelete={this.handleItemDelete}
+          />
           <NewItem onItemSubmit={this.handleItemSubmit} />
         </div>
       </Fragment>
