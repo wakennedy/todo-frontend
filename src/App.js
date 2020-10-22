@@ -27,6 +27,9 @@ class App extends Component {
     newItem.name = event.target.name.value;
     newItem.description = event.target.description.value;
     newItem.category = event.target.category.value;
+    this.setState({
+      items: [...this.state.items, { ...newItem }],
+    });
 
     //post item to db
     fetch(ITEMURL, {
@@ -38,13 +41,12 @@ class App extends Component {
       body: JSON.stringify({
         item: newItem,
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          items: [...this.state.items, { ...data }],
-        });
-      });
+    }).then((res) => res.json());
+    // .then((data) => {
+    //   this.setState({
+    //     items: [...this.state.items, { ...data }],
+    //   });
+    // });
   };
   handleItemDelete = (itemInfo) => {
     let itemsArray = [...this.state.items];

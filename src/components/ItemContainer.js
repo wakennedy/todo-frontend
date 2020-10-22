@@ -4,8 +4,12 @@ import Item from "./Item.js";
 export default class ItemContainer extends Component {
   renderItems = () => {
     const { items } = this.props;
-    return items.map((item) => (
-      <Item info={item} key={item.id} onItemDelete={this.props.onItemDelete} />
+    return items.map((item, index) => (
+      <Item
+        info={item}
+        key={item.id || index}
+        onItemDelete={this.props.onItemDelete}
+      />
     ));
   };
   render() {
