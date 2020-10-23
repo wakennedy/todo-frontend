@@ -19,17 +19,26 @@ class App extends Component {
         });
       });
   }
-  handleItemSubmit = (event) => {
-    event.preventDefault();
-
-    //create new item
+  createNewItemInState = (eventTargetInfo) => {
+    //assign event info to new item
     let newItem = {};
-    newItem.name = event.target.name.value;
-    newItem.description = event.target.description.value;
-    newItem.category = event.target.category.value;
+    newItem.name = eventTargetInfo.name.value;
+    newItem.description = eventTargetInfo.description.value;
+    newItem.category = eventTargetInfo.category.value;
+
+    //update state with the newly constructed item
     this.setState({
       items: [...this.state.items, { ...newItem }],
     });
+
+    //return new item for use in fetch
+    return newItem;
+  };
+  handleItemSubmit = (event) => {
+    event.preventDefault();
+
+    //create item and optimistcly update state
+    let createdItem = this.createNewItemInState(event.target);
 
     //post item to db
     fetch(ITEMURL, {
@@ -39,14 +48,9 @@ class App extends Component {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        item: newItem,
+        item: createdItem,
       }),
     }).then((res) => res.json());
-    // .then((data) => {
-    //   this.setState({
-    //     items: [...this.state.items, { ...data }],
-    //   });
-    // });
   };
   handleItemDelete = (itemInfo) => {
     let itemsArray = [...this.state.items];

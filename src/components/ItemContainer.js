@@ -5,11 +5,7 @@ export default class ItemContainer extends Component {
   renderItems = () => {
     const { items } = this.props;
     return items.map((item, index) => (
-      <Item
-        info={item}
-        key={item.id || index}
-        onItemDelete={this.props.onItemDelete}
-      />
+      <Item info={item} key={index} onItemDelete={this.props.onItemDelete} />
     ));
   };
   render() {
