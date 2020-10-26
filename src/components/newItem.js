@@ -25,6 +25,7 @@ export default class NewItem extends Component {
         <form onSubmit={this.onHandleSubmit}>
           <input
             type="text"
+            id="descriptionInput"
             name="description"
             value={this.state.item}
             onChange={this.onHandleChange}
