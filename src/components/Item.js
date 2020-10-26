@@ -9,17 +9,8 @@ export default class Item extends Component {
     return (
       <Fragment>
         <tr>
-          <td>{info.name}</td>
           <td>{info.description}</td>
-          <td>{info.category}</td>
           <td>
-            {/* <button
-            type="button"
-            className="complete-btn"
-            onClick={this.handleOnComplete}
-          >
-            Complete
-          </button> */}
             <button
               type="button"
               className="delete-btn"

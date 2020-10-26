@@ -22,9 +22,7 @@ class App extends Component {
   createNewItemInState = (eventTargetInfo) => {
     //assign event info to new item
     let newItem = {};
-    newItem.name = eventTargetInfo.name.value;
     newItem.description = eventTargetInfo.description.value;
-    newItem.category = eventTargetInfo.category.value;
 
     //update state with the newly constructed item
     this.setState({
@@ -53,6 +51,8 @@ class App extends Component {
     }).then((res) => res.json());
   };
   handleItemDelete = (itemInfo) => {
+    //find and remove from state
+    //optimistic rendering!
     let itemsArray = [...this.state.items];
     let index = itemsArray.indexOf(itemInfo);
     itemsArray.splice(index, 1);
@@ -68,7 +68,7 @@ class App extends Component {
     return (
       <Fragment>
         <div className="wrapper">
-          <div>Test </div>
+          <div>Navbar goes here. </div>
           <ItemContainer
             items={this.state.items}
             onItemDelete={this.handleItemDelete}

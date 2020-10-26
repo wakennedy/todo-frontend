@@ -13,6 +13,12 @@ export default class ItemContainer extends Component {
       <Fragment>
         <div className="wrapper">
           <table>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Action</th>
+              </tr>
+            </thead>
             <tbody>{this.renderItems()}</tbody>
           </table>
         </div>
