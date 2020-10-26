@@ -34,6 +34,7 @@ class App extends Component {
   };
   handleItemSubmit = (event) => {
     event.preventDefault();
+
     //create item and optimistcly update state
     let createdItem = this.createNewItemInState(event.target);
 
