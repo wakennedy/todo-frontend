@@ -59,10 +59,11 @@ class App extends Component {
 
     fetch(`${ITEMURL}/${itemInfo.id}`, {
       method: "DELETE",
-    });
-    this.setState({
-      items: itemsArray,
-    });
+    }).then(
+      this.setState({
+        items: itemsArray,
+      })
+    );
   };
   render() {
     return (
