@@ -35,8 +35,11 @@ class App extends Component {
   handleItemSubmit = (event) => {
     event.preventDefault();
 
+    let newItem = {};
+    newItem.description = event.target.description.value;
+
     //create item and optimistcly update state
-    let createdItem = this.createNewItemInState(event.target);
+    // let createdItem = this.createNewItemInState(event.target);
 
     //post item to db
     fetch(ITEMURL, {
@@ -46,10 +49,26 @@ class App extends Component {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        item: createdItem,
+        item: newItem,
       }),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        newItem.id = res.id;
+      })
+      .then((res) => {
+        this.setState(
+          {
+            items: [...this.state.items, { ...newItem }],
+          },
+          () => {
+            console.log("this is not the correct way to fix this problem.");
+          }
+        );
+      });
+    // .then(console.log(this.state.items));
   };
+
   handleItemDelete = (itemInfo) => {
     //find and remove from state
     //optimistic rendering!
