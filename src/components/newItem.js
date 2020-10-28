@@ -22,21 +22,25 @@ export default class NewItem extends Component {
   render() {
     return (
       <Fragment>
-        <form onSubmit={this.onHandleSubmit}>
-          <input
-            type="text"
-            id="descriptionInput"
-            name="description"
-            value={this.state.item}
-            onChange={this.onHandleChange}
-          />
-          <input
-            type="submit"
-            name="submit"
-            value="Create"
-            className="submit"
-          />
-        </form>
+        <div className="newItemWrapper">
+          <h1>Task Manager</h1>
+          <form onSubmit={this.onHandleSubmit}>
+            <input
+              type="text"
+              id="descriptionInput"
+              name="description"
+              value={this.state.item}
+              onChange={this.onHandleChange}
+            />
+            <br />
+            <input
+              type="submit"
+              name="submit"
+              value="Create"
+              className="submit"
+            />
+          </form>
+        </div>
       </Fragment>
     );
   }

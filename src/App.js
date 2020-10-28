@@ -88,12 +88,11 @@ class App extends Component {
     return (
       <Fragment>
         <div className="wrapper">
-          <div>Navbar goes here. </div>
+          <NewItem onItemSubmit={this.handleItemSubmit} />
           <ItemContainer
             items={this.state.items}
             onItemDelete={this.handleItemDelete}
           />
-          <NewItem onItemSubmit={this.handleItemSubmit} />
         </div>
       </Fragment>
     );
