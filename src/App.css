@@ -42,10 +42,10 @@
   border-radius: 5px;
 }
 
-table {
+/* table {
   margin: auto;
   word-wrap: break-word;
-  /* border: 5px solid black; */
+  border: 5px solid black;
 }
 th {
   border-bottom: 6px solid black;
@@ -59,6 +59,13 @@ td {
   word-wrap: break-word;
   padding: 5px 5px 5px;
   border-bottom: 3px solid black;
+} */
+table {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 .newItemWrapper {
   margin: auto;
