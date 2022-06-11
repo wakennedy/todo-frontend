@@ -60,15 +60,20 @@ class App extends Component {
         this.setState(
           {
             items: [...this.state.items, { ...newItem }],
-          },
-          () => {
-            console.log("this is not the correct way to fix this problem.");
           }
+          //  why was this here in the first place??
+          // () => {
+          //   console.log("this is not the correct way to fix this problem.");
+          // }
         );
       });
     // .then(console.log(this.state.items));
   };
 
+  handleItemEdit = (itemInfo) => {
+    //how to do this?
+    //remove item from list, and populate it in the new item txt box?
+  };
   handleItemDelete = (itemInfo) => {
     //find and remove from state
     //optimistic rendering!
