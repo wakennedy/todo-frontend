@@ -2,12 +2,14 @@ import React, { Component, Fragment } from "react";
 import "./App.css";
 import ItemContainer from "./components/ItemContainer.js";
 import NewItem from "./components/NewItem.js";
+import Counter from "./components/Counter.js";
 
 const ITEMURL = "http://localhost:3000/items";
 
 class App extends Component {
   state = {
     items: [],
+    count: 0,
   };
 
   componentDidMount() {
@@ -98,6 +100,7 @@ class App extends Component {
             items={this.state.items}
             onItemDelete={this.handleItemDelete}
           />
+          <Counter count={this.state.count} />
         </div>
       </Fragment>
     );
